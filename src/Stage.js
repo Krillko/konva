@@ -269,6 +269,10 @@
         config.callback(src);
       }
 
+      console.log('* * * * remove SceneCanvas');
+      canvas.setSize(0,0);
+      canvas = null;
+
       return src;
     },
     /**
