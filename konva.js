@@ -2,7 +2,7 @@
  * Konva JavaScript Framework v2.5.0
  * http://konvajs.github.io/
  * Licensed under the MIT
- * Date: Wed Oct 24 2018
+ * Date: Thu Oct 25 2018
  *
  * Original work Copyright (C) 2011 - 2013 by Eric Rowell (KineticJS)
  * Modified work Copyright (C) 2014 - present by Anton Lavrenov (Konva)
@@ -4185,10 +4185,13 @@
       config = config || {};
       var mimeType = config.mimeType || null,
         quality = config.quality || null;
-      var url = this._toKonvaCanvas(config).toDataURL(mimeType, quality);
+      var canvas = this._toKonvaCanvas(config),
+          url = canvas.toDataURL(mimeType, quality);
       if (config.callback) {
         config.callback(url);
       }
+      canvas.setSize(0,0);
+      canvas = null;
       return url;
     },
     /**

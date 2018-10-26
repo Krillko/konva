@@ -1662,10 +1662,13 @@
       config = config || {};
       var mimeType = config.mimeType || null,
         quality = config.quality || null;
-      var url = this._toKonvaCanvas(config).toDataURL(mimeType, quality);
+      var canvas = this._toKonvaCanvas(config),
+          url = canvas.toDataURL(mimeType, quality);
       if (config.callback) {
         config.callback(url);
       }
+      canvas.setSize(0, 0);
+      canvas = null;
       return url;
     },
     /**
